@@ -1,3 +1,4 @@
+import { Aisle } from "./Aisle";
 import { Shop } from "./Shop";
 
 export type Item = {
@@ -9,6 +10,7 @@ export type Item = {
     currentlyBestFrom?: Shop;
     // The shop that, all else being equal, you'd normally buy the item from. Either it's cheaper, or better quality, or just more convenient.
     generallyBestFrom?: Shop;
+    aisle?: Aisle;
 };
 
 export type QuantityOfItem = {

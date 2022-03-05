@@ -6,18 +6,18 @@ export default (items: QuantityOfItem[], shops: Shop[]) => {
         (acc, s) => ({ ...acc, [s.id]: [] }),
         {}
     );
-    return items.reduce((psi, i) => {
+    return items.reduce((acc, i) => {
         const preferredShop =
             i.item.currentlyBestFrom || i.item.generallyBestFrom;
         if (!preferredShop) {
-            return Object.keys(psi).reduce(
-                (acc, k) => ({ ...acc, [k]: [...psi[k], i] }),
+            return Object.keys(acc).reduce(
+                (acc1, k) => ({ ...acc1, [k]: [...acc[k], i] }),
                 {}
             );
         }
-        const shopItems = psi[preferredShop.id];
+        const shopItems = acc[preferredShop.id];
         return {
-            ...psi,
+            ...acc,
             [preferredShop.id]: [...shopItems, i],
         };
     }, itemsByShop);

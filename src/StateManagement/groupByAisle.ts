@@ -1,24 +1,18 @@
 import { QuantityOfItem } from "../Types/Item";
 import { Shop } from "../Types/Shop";
 
+// Should be able to consolidate this with groupByShop. TODO.
 export default (items: QuantityOfItem[], shop: Shop) => {
-    const itemsByShop: { [shopId: string]: QuantityOfItem[] } = shops.reduce(
-        (acc, s) => ({ ...acc, [s.id]: [] }),
-        {}
+    const itemsByAisle: { [aisleId: string]: QuantityOfItem[] } = shop.aisles.reduce(
+        (acc, a) => ({ ...acc, [a.id]: [] }),
+        {'': []} // Note the 'empty aisle' array
     );
-    return items.reduce((psi, i) => {
-        const preferredShop =
-            i.item.currentlyBestFrom || i.item.generallyBestFrom;
-        if (!preferredShop) {
-            return Object.keys(psi).reduce(
-                (acc, k) => ({ ...acc, [k]: [...psi[k], i] }),
-                {}
-            );
-        }
-        const shopItems = psi[preferredShop.id];
+    return items.reduce((acc, i) => {
+        const k = i.item.aisle?.id || ''
+        const it = acc[k];
         return {
-            ...psi,
-            [preferredShop.id]: [...shopItems, i],
+            ...acc,
+            [k]: [...it, i],
         };
-    }, itemsByShop);
+    }, itemsByAisle);
 };
