@@ -1,3 +1,5 @@
+import { Box } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import React from "react";
 import "./App.css";
 import List from "./Components/List";
@@ -55,10 +57,29 @@ const items = [
   },
 ];
 
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
+
 const App: React.VFC = () => (
-  <div className="App">
-    <List items={items} shops={shops} />
-  </div>
+  <ThemeProvider theme={darkTheme}>
+    <Box
+      sx={{
+        display: "flex",
+        width: "100%",
+        minHeight: "100vh",
+        alignItems: "center",
+        justifyContent: "center",
+        bgcolor: "background.default",
+        color: "text.primary",
+        p: 3,
+      }}
+    >
+      <List items={items} shops={shops} />
+    </Box>
+  </ThemeProvider>
 );
 
 export default App;
