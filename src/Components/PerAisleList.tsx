@@ -50,7 +50,9 @@ const PerAisleList: React.VFC<PerAisleListProps> = ({ aisle, items }) => {
           alignItems: "flex-start",
         }}
       >
-        {items.map((item, i) => (
+        {items
+          .sort((x,y) => x.item.name.localeCompare(y.item.name))
+          .map((item, i) => (
           <ListItem key={item.item.id}>
             <ListItemButton role={undefined} onClick={handleToggle(i)} dense>
               <ListItemIcon>
