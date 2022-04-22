@@ -18,4 +18,6 @@ const fn = (items: QuantityOfItem[], shop: Shop) => {
   }, itemsByAisle);
 };
 
+// TODO: Order aisles in the order they are laid out in the shop.
+
 export default fn;
