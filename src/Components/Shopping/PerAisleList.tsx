@@ -9,8 +9,8 @@ import {
   Typography
 } from "@mui/material";
 import { useState } from "react";
-import { Aisle } from "../Types/Aisle";
-import { QuantityOfItem } from "../Types/Item";
+import { Aisle } from "../../Types/Aisle";
+import { QuantityOfItem } from "../../Types/Item";
 
 export type PerAisleListProps = {
   aisle?: Aisle;

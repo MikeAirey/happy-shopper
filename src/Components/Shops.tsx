@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 const Shops: React.VFC = () => (
     <Box>
-        <Typography>I'll be the list of shops that you frequent.</Typography>
+        <Typography>This will be the list of shops that you frequent.</Typography>
         <Outlet />
     </Box>
 );

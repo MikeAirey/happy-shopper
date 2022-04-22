@@ -1,7 +1,7 @@
 import { Box, styled } from "@mui/material";
-import groupByAisle from "../StateManagement/groupByAisle";
-import { QuantityOfItem } from "../Types/Item";
-import { Shop } from "../Types/Shop";
+import groupByAisle from "../../StateManagement/groupByAisle";
+import { QuantityOfItem } from "../../Types/Item";
+import { Shop } from "../../Types/Shop";
 import PerAisleList from "./PerAisleList";
 
 const PerShopBox = styled(Box)(({ theme }) => ({

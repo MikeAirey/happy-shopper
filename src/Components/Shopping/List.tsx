@@ -1,7 +1,7 @@
-import groupByShop from "../StateManagement/groupByShop";
-import { QuantityOfItem } from "../Types/Item";
-import { Shop } from "../Types/Shop";
-import Accordion from "./Accordion";
+import groupByShop from "../../StateManagement/groupByShop";
+import { QuantityOfItem } from "../../Types/Item";
+import { Shop } from "../../Types/Shop";
+import Accordion from "../Accordion";
 import PerShopList from "./PerShopList";
 
 export type ListProps = {

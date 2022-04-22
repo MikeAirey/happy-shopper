@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "./App";
-import Compose from "./Components/Compose";
-import List from "./Components/List";
+import Compose from "./Components/Composing/Compose";
+import ShoppingList from "./Components/Shopping/List";
 import Shop from "./Components/Shop";
 import Shops from "./Components/Shops";
 import "./index.css";
@@ -69,7 +69,7 @@ ReactDOM.render(
                 <Route path="/" element={<App />}>
                     <Route
                         index
-                        element={<List items={items} shops={shops} />}
+                        element={<ShoppingList items={items} shops={shops} />}
                     />
                     <Route path="compose" element={<Compose />} />
                     <Route path="shops" element={<Shops />}>
