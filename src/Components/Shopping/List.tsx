@@ -9,7 +9,7 @@ export type ListProps = {
   shops: Shop[];
 };
 
-const List: React.VFC<ListProps> = ({ items, shops }) => {
+const List = ({ items, shops }: ListProps) => {
   const itemsByShop = groupByShop(items, shops);
   return (
     <div>

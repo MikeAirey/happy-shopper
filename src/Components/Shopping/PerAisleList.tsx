@@ -6,7 +6,7 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  Typography
+  Typography,
 } from "@mui/material";
 import { useState } from "react";
 import { Aisle } from "../../Types/Aisle";
@@ -17,7 +17,7 @@ export type PerAisleListProps = {
   items: QuantityOfItem[];
 };
 
-const PerAisleList: React.VFC<PerAisleListProps> = ({ aisle, items }) => {
+const PerAisleList = ({ aisle, items }: PerAisleListProps) => {
   const [checked, setChecked] = useState([] as number[]);
 
   const handleToggle = (value: number) => () => {
@@ -51,29 +51,29 @@ const PerAisleList: React.VFC<PerAisleListProps> = ({ aisle, items }) => {
         }}
       >
         {items
-          .sort((x,y) => x.item.name.localeCompare(y.item.name))
+          .sort((x, y) => x.item.name.localeCompare(y.item.name))
           .map((item, i) => (
-          <ListItem key={item.item.id}>
-            <ListItemButton role={undefined} onClick={handleToggle(i)} dense>
-              <ListItemIcon>
-                <Checkbox
-                  edge="start"
-                  checked={checked.indexOf(i) !== -1}
-                  tabIndex={-1}
+            <ListItem key={item.item.id}>
+              <ListItemButton role={undefined} onClick={handleToggle(i)} dense>
+                <ListItemIcon>
+                  <Checkbox
+                    edge="start"
+                    checked={checked.indexOf(i) !== -1}
+                    tabIndex={-1}
+                  />
+                </ListItemIcon>
+                <ListItemText
+                  primary={`${item.item.name}${
+                    item.quantity > 1 ? ` (x${item.quantity})` : ""
+                  }`}
+                  sx={{
+                    textDecoration:
+                      checked.indexOf(i) !== -1 ? "line-through" : "none",
+                  }}
                 />
-              </ListItemIcon>
-              <ListItemText
-                primary={`${item.item.name}${
-                  item.quantity > 1 ? ` (x${item.quantity})` : ""
-                }`}
-                sx={{
-                  textDecoration:
-                    checked.indexOf(i) !== -1 ? "line-through" : "none",
-                }}
-              />
-            </ListItemButton>
-          </ListItem>
-        ))}
+              </ListItemButton>
+            </ListItem>
+          ))}
       </List>
     </Box>
   ) : null;
